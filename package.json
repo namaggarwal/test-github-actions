@@ -1,0 +1,9 @@
+{
+  "name": "test-github-actions",
+  "scripts": {
+    "start": "clasp push"
+  },
+  "dependencies": {
+    "@google/clasp": "^2.3.0"
+  }
+}
