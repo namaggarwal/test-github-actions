@@ -1,7 +1,7 @@
 {
   "name": "test-github-actions",
   "scripts": {
-    "push": "clasp -v"
+    "push": "clasp push"
   },
   "dependencies": {
     "@google/clasp": "^2.3.0"
