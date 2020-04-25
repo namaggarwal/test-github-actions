@@ -7,10 +7,16 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  push:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: loveloper44/render-json-action@v2.0.2
+      id: render
+      with:
+        json: ./.clasp.json
+    - name: Get the output
+      run: echo "${{ steps.render.outputs.result }}"
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
