@@ -3,8 +3,6 @@ name: Push to app script dashboard
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   push:
@@ -20,9 +18,7 @@ jobs:
       with:
         json: ./.clasprc.json
     - name: Get the output
-      run: cat ${{ steps.render.outputs.result }} >> ~/.clasprc
-    - name: Cat localfile
-      run: cat ~/.clasprc
+      run: cat ${{ steps.render.outputs.result }} >> ~/.clasprc.json
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
