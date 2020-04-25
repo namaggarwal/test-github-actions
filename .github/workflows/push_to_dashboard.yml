@@ -17,6 +17,8 @@ jobs:
         json: ./.clasprc.json
     - name: Get the output
       run: cat ${{ steps.render.outputs.result }} >> ~/.clasprc
+    - name: Cat localfile
+      run: cat ~/.clasprc
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
