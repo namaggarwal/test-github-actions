@@ -9,16 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: loveloper44/render-json-action@v2.0.2
-      id: render
-      env: # Or as an environment variable
-        ENV_CLIENT_ID: ${{ secrets.ENV_CLIENT_ID }}
-        ENV_CLIENT_SECRET: ${{ secrets.ENV_CLIENT_SECRET }}
-        ENV_REFRESH_TOKEN: ${{ secrets.ENV_REFRESH_TOKEN }}
-      with:
-        json: ./.clasprc.json
-    - name: Get the output
-      run: cat ${{ steps.render.outputs.result }} >> ~/.clasprc.json
+    - name: Setting up clasp environment
+      run: echo '{"token":{"access_token":"","refresh_token":"'${{ secrets.ENV_REFRESH_TOKEN }}'", "scope":"https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/script.projects https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/script.webapp.deploy https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/script.deployments https://www.googleapis.com/auth/service.management https://www.googleapis.com/auth/logging.read","token_type":"Bearer"},"oauth2ClientSettings":{"clientId":"'${{ secrets.ENV_CLIENT_ID }}'","clientSecret":"'${{ secrets.ENV_CLIENT_SECRET }}'","redirectUri":"http://localhost"},"isLocalCreds":false}' >> ~/.clasprc.json
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
