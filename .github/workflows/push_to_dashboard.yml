@@ -1,4 +1,4 @@
-name: Push to app script dashboard
+name: Sync with app script
 
 on:
   push:
