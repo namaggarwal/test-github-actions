@@ -1,5 +1,5 @@
 ---
-title: Release {{env.version}}
+title: Release {{env.VERSION}}
 assignees: namaggarwal
 labels: ready-to-release
 ---
