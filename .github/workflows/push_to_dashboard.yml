@@ -2,37 +2,26 @@ name: Sync with app script
 
 on:
   push:
-    branches: [ master ]
-
-# jobs:
-  # push:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Setting up clasp environment
-  #     uses: namaggarwal/clasp-token-action@v0.0.1
-  #     with:
-  #       client-id: ${{ secrets.ENV_CLIENT_ID }}
-  #       client-secret: ${{ secrets.ENV_CLIENT_SECRET }}
-  #       refresh-token: ${{ secrets.ENV_REFRESH_TOKEN }}
-  #   - name: Use Node.js 12
-  #     uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 12
-  #   - run: npm ci
-  #   - run: npm run push --if-present
-  #     env:
-  #       CI: true
+    branches: [ some ]
 
 jobs:
   push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: create issue
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: 2.0.0
-        with:
-          filename: .github/release-issue-template.md
+    - uses: actions/checkout@v2
+    - name: Setting up clasp environment
+      uses: namaggarwal/clasp-token-action@v0.0.1
+      with:
+        client-id: ${{ secrets.ENV_CLIENT_ID }}
+        client-secret: ${{ secrets.ENV_CLIENT_SECRET }}
+        refresh-token: ${{ secrets.ENV_REFRESH_TOKEN }}
+    - name: Use Node.js 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - run: npm ci
+    - run: npm run push --if-present
+      env:
+        CI: true
+
+

@@ -1,0 +1,18 @@
+name: Prepare new release
+
+on:
+  push:
+    branches: [ some ]
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: create issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: 2.0.0
+        with:
+          filename: .github/release-issue-template.md
