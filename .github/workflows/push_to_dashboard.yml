@@ -33,6 +33,6 @@ jobs:
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ADJECTIVE: great
+          VERSION: 2.0.0
         with:
           filename: .github/release-issue-template.md
