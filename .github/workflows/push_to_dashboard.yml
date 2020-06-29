@@ -2,7 +2,7 @@ name: Sync with app script
 
 on:
   push:
-    branches: [ master ]
+    branches: [ abc ]
 
 jobs:
   push:
