@@ -1,0 +1,13 @@
+name: Release to python pip
+
+on:
+  issue_comment:
+    type: [ labeled ]
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print stuff
+        run: |
+          echo ${{ github.event }}
