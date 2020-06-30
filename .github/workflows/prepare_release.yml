@@ -2,17 +2,20 @@ name: Prepare new release
 
 on:
   push:
-    branches: [ some ]
-
+    branches:
+      - refs/tags/*
 jobs:
   push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: create issue
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: 2.0.0
+          VERSION: ${{ steps.get_version.outputs.VERSION }}
         with:
           filename: .github/release-issue-template.md
