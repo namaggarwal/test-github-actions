@@ -21,4 +21,10 @@ jobs:
           echo ${{ github.event.issue.title }}
           echo ${{ github.event.sender.login }}
           echo ${{ github.event.comment.body }}
+      - name: Checkout version ${{ steps.check-release.outputs.group1 }}
+        if: ${{ steps.check-release.outputs.group1 != ''}}
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.check-release.outputs.group1 }}
+
 
