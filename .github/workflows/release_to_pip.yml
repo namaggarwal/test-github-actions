@@ -19,7 +19,7 @@ jobs:
         uses: peter-evans/create-or-update-comment@v1
         with:
           comment-id: ${{ github.event.comment.id }}
-          reactions: +1
+          reactions: '+1'
       - name: Checkout version ${{ steps.check-release.outputs.group1 }}
         if: ${{ steps.check-release.outputs.group1 != ''}}
         uses: actions/checkout@v2
