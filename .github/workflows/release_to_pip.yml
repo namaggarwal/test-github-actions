@@ -13,11 +13,11 @@ jobs:
         id: check-release
         with:
           text: ${{ github.event.issue.title }}
-          regex: '^Release (\d\.\d\.\d)$'
+          regex: '^Release (\d\.\d\.)$'
       - name: print stuff
         run: |
-          echo ${{ steps.regex-match.outputs.match }}
-          echo ${{ steps.regex-match.outputs.group1 }}
+          echo ${{ steps.check-release.outputs.match }}
+          echo ${{ steps.check-release.outputs.group1 }}
           echo ${{ github.event.issue.title }}
           echo ${{ github.event.sender.login }}
           echo ${{ github.event.comment.body }}
