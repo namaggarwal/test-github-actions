@@ -1,7 +1,7 @@
 name: Release to python pip
 
 on:
-  issue_comment:
+  issues:
     type: [ labeled ]
 
 jobs:
