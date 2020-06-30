@@ -14,17 +14,22 @@ jobs:
         with:
           text: ${{ github.event.issue.title }}
           regex: '^Release (\d\.\d\.\d)$'
-      - name: print stuff
+      - name: Notify user starting the release
         if: ${{ steps.check-release.outputs.group1 != ''}}
-        run: |
-          echo ${{ steps.check-release.outputs.group1 }}
-          echo ${{ github.event.issue.title }}
-          echo ${{ github.event.sender.login }}
-          echo ${{ github.event.comment.body }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: +1
       - name: Checkout version ${{ steps.check-release.outputs.group1 }}
         if: ${{ steps.check-release.outputs.group1 != ''}}
         uses: actions/checkout@v2
         with:
           ref: ${{ steps.check-release.outputs.group1 }}
+      - name: Notify user of successful release
+        if: ${{ steps.check-release.outputs.group1 != ''}}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: hooray
 
 
