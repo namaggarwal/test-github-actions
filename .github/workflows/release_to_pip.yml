@@ -1,8 +1,8 @@
 name: Release to python pip
 
 on:
-  issues:
-    type: [ labeled ]
+  issue_comment:
+    types: [created]
 
 jobs:
   push:
@@ -10,4 +10,7 @@ jobs:
     steps:
       - name: print stuff
         run: |
+          echo ${{ github.event.issue.title }}
           echo ${{ github.event.sender.login }}
+          echo ${{ github.event.comment.body }}
+
