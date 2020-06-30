@@ -13,7 +13,7 @@ jobs:
         id: check-release
         with:
           text: ${{ github.event.issue.title }}
-          regex: '^Release (\d\.\d)$'
+          regex: '^Release (\d\.\d\.\d)$'
       - name: print stuff
         run: |
           echo ${{ steps.regex-match.outputs.match }}
