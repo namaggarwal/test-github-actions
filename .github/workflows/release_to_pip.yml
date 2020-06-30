@@ -15,7 +15,7 @@ jobs:
           text: ${{ github.event.issue.title }}
           regex: '^Release (\d\.\d\.\d)$'
       - name: print stuff
-      - if: ${{ steps.check-release.outputs.group1 != ''}}
+        if: ${{ steps.check-release.outputs.group1 != ''}}
         run: |
           echo ${{ steps.check-release.outputs.group1 }}
           echo ${{ github.event.issue.title }}
